@@ -63,7 +63,12 @@ function App() {
         </div>
         <textarea
           onChange={(e) => setInputText(e.target.value)}
-          className="w-full h-80 bg-neutral-800 px-4 py-3 rounded-lg mt-2 font-mono text-sm text-indigo-200"
+          className="w-full h-80 bg-neutral-800 px-4 py-3 rounded-lg mt-2 font-mono text-sm text-indigo-200 focus:outline-none transition-colors focus-visible:border-indigo-400/75 border border-transparent"
+          spellCheck={false}
+          autoComplete="off"
+          autoCorrect="off"
+          autoCapitalize="off"
+          autoFocus
         >
           {inputText}
         </textarea>
@@ -77,7 +82,10 @@ function App() {
 
           {hasOutput && (
             <button
-              className="inline-flex items-center rounded-md bg-yellow-400/10 px-2 py-1 text-xs font-medium text-yellow-500 ring-1 ring-inset ring-yellow-400/20 hover:ring-yellow-400/50 transition-colors copy-button group-has-[.copy-button:hover]:border-yellow-400/50"
+              className={twMerge(
+                'inline-flex items-center rounded-md bg-yellow-400/10 px-2 py-1 text-xs font-medium text-yellow-500 ring-1 ring-inset ring-yellow-400/20 hover:ring-yellow-400/50 transition-colors copy-button group-has-[.copy-button:hover]:border-yellow-400/50',
+                hasCopied && 'bg-green-500/10 text-green-500 ring-green-500/20 hover:ring-green-500/50'
+              )}
               onClick={copyToClipboard}
             >
               {hasCopied ? 'Copied to clipboard' : 'Copy to clipboard'}
@@ -87,7 +95,8 @@ function App() {
         <button
           className={twMerge(
             'text-left rounded-lg bg-neutral-800 border border-transparent transition-colors copy-button w-full',
-            hasOutput && 'cursor-pointer hover:border-yellow-400/50 group-has-[.copy-button:hover]:border-yellow-400/50'
+            hasOutput && 'cursor-pointer hover:border-yellow-400/50 group-has-[.copy-button:hover]:border-yellow-400/50',
+            hasCopied && 'hover:border-green-500/50 group-has-[.copy-button:hover]:border-green-500/50'
           )}
           disabled={!hasOutput}
           onClick={copyToClipboard}
