@@ -3,7 +3,7 @@ import { twMerge } from 'tailwind-merge';
 export function FigmaLogo({ className }: { className?: string }) {
   return (
     <div className={twMerge('flex items-center gap-1.5', className)}>
-      <div className="object-contain basis-3.5">
+      <div className="object-contain basis-3">
         <svg width="100%" height="100%" viewBox="0 0 38 57" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
             d="M19 28.5C19 25.9804 20.0009 23.5641 21.7825 21.7825C23.5641 20.0009 25.9804 19 28.5 19C31.0196 19 33.4359 20.0009 35.2175 21.7825C36.9991 23.5641 38 25.9804 38 28.5C38 31.0196 36.9991 33.4359 35.2175 35.2175C33.4359 36.9991 31.0196 38 28.5 38C25.9804 38 23.5641 36.9991 21.7825 35.2175C20.0009 33.4359 19 31.0196 19 28.5Z"
@@ -27,7 +27,7 @@ export function FigmaLogo({ className }: { className?: string }) {
           />
         </svg>
       </div>
-      <div className="object-contain basis-14">
+      <div className="object-contain basis-[50px]">
         <svg width="100%" height="100%" viewBox="0 0 73 26" fill="white" xmlns="http://www.w3.org/2000/svg">
           <path d="M0.52002 0V20.16L3.12002 20.17V10.57H9.37002V8.03H3.11002V2.53H11.26V0H0.52002ZM15.92 4.1C16.3709 4.1 16.8033 3.92089 17.1221 3.60208C17.4409 3.28327 17.62 2.85087 17.62 2.4C17.62 1.94913 17.4409 1.51673 17.1221 1.19792C16.8033 0.879107 16.3709 0.7 15.92 0.7C15.4692 0.7 15.0367 0.879107 14.7179 1.19792C14.3991 1.51673 14.22 1.94913 14.22 2.4C14.22 2.85087 14.3991 3.28327 14.7179 3.60208C15.0367 3.92089 15.4692 4.1 15.92 4.1ZM14.61 6.63V20.17H17.21V6.63H14.61Z" />
           <path
