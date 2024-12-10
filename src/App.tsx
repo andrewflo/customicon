@@ -56,6 +56,7 @@ function App() {
   }
 
   const [hasCopied, setHasCopied] = useState(false);
+  const [outputHovered, setOutputHovered] = useState(false);
 
   useEffect(() => setHasCopied(false), [outputText]);
 
@@ -94,8 +95,9 @@ function App() {
           {hasOutput && (
             <button
               className={twMerge(
-                'inline-flex items-center rounded-md bg-yellow-400/10 px-2 py-1 text-xs font-medium text-yellow-500 ring-1 ring-inset ring-yellow-400/20 hover:ring-yellow-400/50 transition-colors copy-button group-has-[.copy-button:hover]:border-yellow-400/50',
-                hasCopied && 'bg-green-500/10 text-green-500 ring-green-500/20 hover:ring-green-500/50'
+                'inline-flex items-center rounded-md bg-yellow-400/10 px-2 py-1 text-xs font-medium text-yellow-500 ring-1 ring-inset ring-yellow-400/20 hover:ring-yellow-400/50 transition-colors copy-button group-has-[.output:hover]:border-yellow-400/50',
+                hasCopied && 'bg-green-500/10 text-green-500 ring-green-500/20 hover:ring-green-500/50',
+                outputHovered && (hasCopied ? 'ring-green-500/50' : 'ring-yellow-400/50')
               )}
               onClick={copyToClipboard}
             >
@@ -118,12 +120,14 @@ function App() {
         </div>
         <button
           className={twMerge(
-            'text-left rounded-lg bg-neutral-800 border border-transparent transition-colors copy-button w-full',
+            'text-left rounded-lg bg-neutral-800 border border-transparent transition-colors output w-full',
             hasOutput && 'cursor-pointer hover:border-yellow-400/50 group-has-[.copy-button:hover]:border-yellow-400/50',
             hasCopied && 'hover:border-green-500/50 group-has-[.copy-button:hover]:border-green-500/50'
           )}
           disabled={!hasOutput}
           onClick={copyToClipboard}
+          onMouseEnter={() => setOutputHovered(true)}
+          onMouseLeave={() => setOutputHovered(false)}
         >
           <pre className="w-full px-4 py-3 text-sm text-yellow-100 whitespace-pre-wrap h-80 overflow-auto">{outputText}</pre>
         </button>
