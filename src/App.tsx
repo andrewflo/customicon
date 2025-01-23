@@ -43,6 +43,9 @@ function App() {
       result = result.replace(/fill="[^"]*"/g, 'fill={color} ');
     }
 
+    // Replace double quotes with single quotes
+    result = result.replace(/"/g, "'");
+
     return result;
   }, [inputText, mode]);
 
